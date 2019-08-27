@@ -33,7 +33,7 @@ MIT.
 
 Thanks to the providers of the tools and data.
   
-  
-  
+## Last Updated
 Terry Dolan, @lfcsorted
+
 Last updated: August 2019
