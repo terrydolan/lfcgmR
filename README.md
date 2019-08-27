@@ -23,7 +23,7 @@ This remains a hybrid Python and R development. Python infrastructure (pandas, e
 
 ## Data source
 
-Special thanks to [lfchistory.net](https://http://www.lfchistory.net) who provided the LFC refrence data.
+Special thanks to [lfchistory.net](https://www.lfchistory.net) who provided the LFC refrence data.
 
 ## Licence
 
@@ -32,7 +32,8 @@ MIT.
 ## Acknowledgements
 
 Thanks to the providers of the tools and data.
-
-
+  
+  
+  
 Terry Dolan, @lfcsorted
 Last updated: August 2019
