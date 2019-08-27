@@ -23,7 +23,7 @@ This remains a hybrid Python and R development. Python infrastructure (pandas, e
 
 ## Data source
 
-Special thanks to [lfchistory.net](https://www.lfchistory.net) who provided the LFC refrence data.
+Special thanks to [lfchistory.net](https://www.lfchistory.net) who provided the LFC reference data.
 
 ## Licence
 
