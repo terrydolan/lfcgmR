@@ -1,0 +1,35 @@
+# ignore lfcgmR prototype files
+
+# non-project files to ignore
+*.bat
+*.jpg
+*.log
+*.pdf
+*.pptx
+*.png
+*.pptx
+*.pyc
+*.sh
+*.tmp
+*.txt
+*.xlsx
+tmp*.*
+*.old*
+*~*
+*.sav*
+Thumbs.db
+
+# data, archive and tmp folder files
+archive/
+data/
+tmp*/
+
+# IPython notebook checkpoint files
+.ipynb_checkpoints/
+
+# rstudio files
+rsconnect/
+*.Rdata
+*.Rhistory
+*.Rproj*
+.Rproj.user
