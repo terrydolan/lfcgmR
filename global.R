@@ -7,7 +7,7 @@
 # __author__ = "Terry Dolan"
 # __copyright__ = "Terry Dolan"
 # __license__ = "MIT"
-# __version__ = "2.3.0"
+# __version__ = "2.4.0"
 # __email__ = "terrydolan1892@gmail.com"
 # __status__ = "Prototype"
-lfcgmR_version <- '2.3.0'
+lfcgmR_version <- '2.4.0'

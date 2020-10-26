@@ -2,13 +2,18 @@ library(shiny)
 library(ggplot2)
 library(dplyr)
 library(scales)
+library(stringr)
 
 # create the dflfcgm dataframe
 dflfcgm <- read.csv('data/lfc_scorers_tl_pos_age.csv', header=TRUE)
 
 # Change log
 # v1, February 2016, original
-# v2, August 2019, enhance to ensure pretty printing of x and y axis
+# v2, August 2019,   enhance to ensure pretty printing of x and y axis
+# v3, October 2020,  updated for title number 19; 
+#   changed examplar plot to show highest scorers in title winning season in modern era
+#   used stringr library to str_wrap the examplar plot's title
+
 ggplot_age_vs_lgoals <- function(df, players) {
   # Return ggplot of League Goals vs Age for given players in dataframe.
   #
@@ -18,19 +23,19 @@ ggplot_age_vs_lgoals <- function(df, players) {
   TITLE <- 'LFCGMR League Goals vs Age'
   XLABEL <- 'Age at Midpoint of Season'
   YLABEL <- 'League Goals per Season'
-  EXEMPLAR_PLAYERS <- c('Ian Rush', 'Kenny Dalglish', 'Roger Hunt', 'David Johnson', 
-                        'Harry Chambers', 'John Toshack', 'John Barnes', 'Kevin Keegan')
-  EXEMPLAR_TITLE <- 'LFCGMR Example Plot, The Champions: League Goals vs Age
-
-This plot shows the goalscoring performance over their Liverpool career of 
-arguably the most important 8 players, those who scored most goals in the 
-18 title winning seasons
-'
+  EXEMPLAR_PLAYERS <- c('David Johnson', 'Ian Rush', 'John Aldridge', 'John Barnes', 'John Toshack', 
+                        'Kenny Dalglish', 'Kevin Keegan', 'Mohamed Salah', 'Roger Hunt')
   
-  # if players vector is empty then set the default exemplar options
+  EXEMPLAR_TITLE_MAIN <- 'LFCGMR Example Plot, The Modern Champions: League Goals vs Age\n\n'
+  EXEMPLAR_TITLE_SUB <- "This plot takes Liverpool's top scorers in the league in the 14 title 
+winning seasons since 1962, when Liverpool returned to top flight, and compares their league 
+goals scored per season vs age over their Liverpool career"
+  STR_WRAP_WIDTH = 78
+  
+  # if players vector is empty then plot with the exemplar options
   if (length(players) == 0) {
     players <- EXEMPLAR_PLAYERS
-    title <- EXEMPLAR_TITLE
+    title <- paste(EXEMPLAR_TITLE_MAIN, str_wrap(EXEMPLAR_TITLE_SUB, STR_WRAP_WIDTH), sep='')
   } else {
     title <- TITLE
   }
@@ -48,7 +53,7 @@ arguably the most important 8 players, those who scored most goals in the
     geom_smooth(data=this_dfgt2, se=FALSE, size=0.8) + 
     xlab(XLABEL) + 
     ylab(YLABEL) + 
-    ggtitle(title) + 
+    ggtitle(title) +
     scale_shape_manual(values=0:length(players)) +
     theme(legend.text=element_text(size=10)) + 
     scale_y_continuous(breaks = function(x) unique(floor(pretty(seq(0, (max(x) + 1) * 1.1))))) + 
@@ -77,8 +82,8 @@ shinyServer(function(input, output) {
   
   # output the 'table' of selected players in dataframe
   output$table <- renderDataTable({
-    EXEMPLAR_PLAYERS <- c('Ian Rush', 'Kenny Dalglish', 'Roger Hunt', 'David Johnson', 
-                          'Harry Chambers', 'John Toshack', 'John Barnes', 'Kevin Keegan')
+    EXEMPLAR_PLAYERS <- c('David Johnson', 'Ian Rush', 'John Aldridge', 'John Barnes', 'John Toshack', 
+                          'Kenny Dalglish', 'Kevin Keegan', 'Mohamed Salah', 'Roger Hunt')
     
     players <- input$player_input
     
